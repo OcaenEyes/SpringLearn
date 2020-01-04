@@ -18,5 +18,8 @@ public class App {
         context = new ClassPathXmlApplicationContext("SpringBeans.xml");
         Customer obj = (Customer) context.getBean("customer");
         System.out.println(obj.toString());
+
+
+
     }
 }
