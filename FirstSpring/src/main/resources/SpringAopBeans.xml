@@ -3,17 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userService" class="com.gzy.spring_aop_test.advice.UserService">
+    <bean id="userService" class="com.gzy.spring_aop_test.advice_test.UserService">
         <property name="name" value="gaozhiyong" />
         <property name="url" value="http://oceaneyes.top" />
     </bean>
 
-    <bean id="hijackBeforeMethod" class="com.gzy.spring_aop_test.advice.HijackBeforeMethod" />
+    <bean id="hijackBeforeMethod" class="com.gzy.spring_aop_test.advice_test.HijackBeforeMethod" />
 
 <!--    在配置文件中加入新的 bean 配置 HijackBeforeMethod ，-->
 <!--    然后创建一个新的代理（ proxy ），命名为 customerServiceProxy 。-->
 <!--    target 定义你想劫持哪个 bean；-->
-<!--    interceptorNames 定义想用哪个 class ( advice )劫持 target 。-->
+<!--    interceptorNames 定义想用哪个 class ( advice_test )劫持 target 。-->
+<!--    手工创建proxy-->
     <bean id="userServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="target" ref="userService"/>
         <property name="interceptorNames" >
@@ -22,4 +23,11 @@
             </list>
         </property>
     </bean>
+
+<!--    自动创建proxy-->
+<!--    创建 BeanNameAutoProxyCreator ，-->
+<!--    将所有的 bean（通过名字或正则表达式匹配）和 advisor 形成一个独立的单元-->
+<!--    只要 bean 的 id 符合 *Service ，就会自动创建 proxy-->
+
+
 </beans>
