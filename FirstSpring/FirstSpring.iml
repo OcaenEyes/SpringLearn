@@ -14,10 +14,16 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
+        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/SpringAopAspectj.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/SpringAopBeans.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/SpringBeans.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/SpringJdbcTemplateBeans.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/SpringOutput.xml</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/gzy/springtest/java_config_test01/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/resources/SpringTransactionBeans.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/UserBean.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/gzy/spring_basic_test/java_config_test01/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/gzy/spring_basic_test/Config/SpringTestConfig.java</file>
         </fileset>
       </configuration>
     </facet>
