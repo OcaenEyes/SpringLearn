@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/jdbc?serverTimezone=Asia/Shanghai" />
+        <property name="username" value="root" />
+        <property name="password" value="123456" />
+    </bean>
+
+    <bean id="accountDao" class="com.gzy.spring_transaction_test.dao.AccountDaoImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="accountService" class="com.gzy.spring_transaction_test.service.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao" />
+    </bean>
+
+<!--&lt;!&ndash;    创建模板&ndash;&gt;-->
+<!--    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">-->
+<!--        <property name="transactionManager" ref="transactionManager" />-->
+<!--    </bean>-->
+
+<!--&lt;!&ndash;    配置事务管理器&ndash;&gt;-->
+<!--&lt;!&ndash;    管理器需要事务;&ndash;&gt;-->
+<!--&lt;!&ndash;    事务从 连接Connection中获得;&ndash;&gt;-->
+<!--&lt;!&ndash;    连接Connection 从连接池 DataSource中获得&ndash;&gt;-->
+<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--        <property name="dataSource" ref="dataSource" />-->
+<!--    </bean>-->
+
+<!--&lt;!&ndash;    创建 accountService的bean&ndash;&gt;-->
+<!--    <bean id="accountService" class="com.gzy.spring_transaction_test.service.AccountServiceImpl">-->
+<!--        <property name="accountDao" ref="accountDao"/>-->
+<!--        <property name="transactionTemplate" ref="transactionTemplate" />-->
+<!--    </bean>-->
+</beans>

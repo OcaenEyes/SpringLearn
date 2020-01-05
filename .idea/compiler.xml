@@ -10,7 +10,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="FirstSpring" target="1.5" />
+      <module name="FirstSpring" target="1.8" />
+      <module name="SpringWebMvcTest" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
