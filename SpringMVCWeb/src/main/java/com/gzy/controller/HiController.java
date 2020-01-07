@@ -12,6 +12,6 @@ public class HiController {
     @RequestMapping(method = RequestMethod.GET)
     public String sayHi(Model model){
         model.addAttribute("message","hi,这是第一个SpringMVC");
-        return "hi";
+        return "hi"; //转发到视图 hi.jsp
     }
 }

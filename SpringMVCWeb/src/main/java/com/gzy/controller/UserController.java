@@ -1,8 +1,10 @@
 package com.gzy.controller;
 
 import com.gzy.model.UserForm;
+import com.gzy.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,10 @@ public class UserController {
     //生成一个日志记录对象，标记打印的事哪个类的信息
     private static final Log logger = LogFactory.getLog(UserForm.class);
 
+    //将服务依赖注入到属性 userService
+    @Autowired
+    public UserService userService;
+
     /**
      * 处理登录  使用UserForm对象（实体Bean） ， user接收注册页面提交的请求参数
      *
@@ -22,7 +28,7 @@ public class UserController {
      */
     @RequestMapping("/login")
     public String login(UserForm user, HttpSession session, Model model) {
-        if ("gzy".equals(user.getName()) && "123456".equals(user.getPassword())) {
+        if (userService.login(user)) {
             session.setAttribute("user", user);
             logger.info("登录成功");
             return "main";
@@ -40,7 +46,7 @@ public class UserController {
      */
     @RequestMapping("/register")
     public String register(UserForm user, Model model) {
-        if ("gzy".equals(user.getName()) && "123456".equals(user.getPassword())) {
+        if (userService.register(user)) {
             logger.info("注册成功");
             return "login";
         } else {

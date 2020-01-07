@@ -27,6 +27,7 @@
             </td>
         </tr>
     </table>
+    ${messageError}
 </form>
 </body>
 </html>
